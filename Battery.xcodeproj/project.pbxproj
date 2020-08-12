@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		0264F33D24E4219100ED0263 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0264F33C24E4219100ED0263 /* AppDelegate.swift */; };
 		0264F33F24E4219100ED0263 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0264F33E24E4219100ED0263 /* SceneDelegate.swift */; };
-		0264F34124E4219100ED0263 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0264F34024E4219100ED0263 /* ViewController.swift */; };
+		0264F34124E4219100ED0263 /* MainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0264F34024E4219100ED0263 /* MainVC.swift */; };
 		0264F34424E4219100ED0263 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0264F34224E4219100ED0263 /* Main.storyboard */; };
 		0264F34624E4219200ED0263 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0264F34524E4219200ED0263 /* Assets.xcassets */; };
 		0264F34924E4219200ED0263 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0264F34724E4219200ED0263 /* LaunchScreen.storyboard */; };
@@ -70,7 +70,7 @@
 		0264F33924E4219100ED0263 /* Battery.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Battery.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0264F33C24E4219100ED0263 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0264F33E24E4219100ED0263 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		0264F34024E4219100ED0263 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		0264F34024E4219100ED0263 /* MainVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainVC.swift; sourceTree = "<group>"; };
 		0264F34324E4219100ED0263 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		0264F34524E4219200ED0263 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0264F34824E4219200ED0263 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -130,12 +130,10 @@
 		0264F33B24E4219100ED0263 /* Battery */ = {
 			isa = PBXGroup;
 			children = (
-				0264F33C24E4219100ED0263 /* AppDelegate.swift */,
-				0264F33E24E4219100ED0263 /* SceneDelegate.swift */,
-				0264F34024E4219100ED0263 /* ViewController.swift */,
-				0264F34224E4219100ED0263 /* Main.storyboard */,
+				0264F37C24E4223100ED0263 /* Delegates */,
+				0264F37B24E421DF00ED0263 /* Storyboards */,
+				0264F34024E4219100ED0263 /* MainVC.swift */,
 				0264F34524E4219200ED0263 /* Assets.xcassets */,
-				0264F34724E4219200ED0263 /* LaunchScreen.storyboard */,
 				0264F34A24E4219200ED0263 /* Info.plist */,
 			);
 			path = Battery;
@@ -154,15 +152,41 @@
 		0264F36024E4219300ED0263 /* Battery WatchKit Extension */ = {
 			isa = PBXGroup;
 			children = (
-				0264F36124E4219300ED0263 /* InterfaceController.swift */,
+				0264F37A24E421D000ED0263 /* Controllers */,
 				0264F36324E4219300ED0263 /* ExtensionDelegate.swift */,
-				0264F36524E4219300ED0263 /* NotificationController.swift */,
-				0264F36724E4219300ED0263 /* ComplicationController.swift */,
 				0264F36924E4219300ED0263 /* Assets.xcassets */,
 				0264F36B24E4219300ED0263 /* Info.plist */,
 				0264F36C24E4219300ED0263 /* PushNotificationPayload.apns */,
 			);
 			path = "Battery WatchKit Extension";
+			sourceTree = "<group>";
+		};
+		0264F37A24E421D000ED0263 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				0264F36124E4219300ED0263 /* InterfaceController.swift */,
+				0264F36524E4219300ED0263 /* NotificationController.swift */,
+				0264F36724E4219300ED0263 /* ComplicationController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		0264F37B24E421DF00ED0263 /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				0264F34224E4219100ED0263 /* Main.storyboard */,
+				0264F34724E4219200ED0263 /* LaunchScreen.storyboard */,
+			);
+			path = Storyboards;
+			sourceTree = "<group>";
+		};
+		0264F37C24E4223100ED0263 /* Delegates */ = {
+			isa = PBXGroup;
+			children = (
+				0264F33C24E4219100ED0263 /* AppDelegate.swift */,
+				0264F33E24E4219100ED0263 /* SceneDelegate.swift */,
+			);
+			path = Delegates;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -297,7 +321,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0264F34124E4219100ED0263 /* ViewController.swift in Sources */,
+				0264F34124E4219100ED0263 /* MainVC.swift in Sources */,
 				0264F33D24E4219100ED0263 /* AppDelegate.swift in Sources */,
 				0264F33F24E4219100ED0263 /* SceneDelegate.swift in Sources */,
 			);
@@ -407,7 +431,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.6;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -461,7 +485,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.6;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -476,7 +500,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = H2Z5VT54PS;
+				DEVELOPMENT_TEAM = B6CFW954UH;
 				INFOPLIST_FILE = "Battery WatchKit Extension/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -489,7 +513,7 @@
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 4;
-				WATCHOS_DEPLOYMENT_TARGET = 6.2;
+				WATCHOS_DEPLOYMENT_TARGET = 6.0;
 			};
 			name = Debug;
 		};
@@ -498,7 +522,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = H2Z5VT54PS;
+				DEVELOPMENT_TEAM = B6CFW954UH;
 				INFOPLIST_FILE = "Battery WatchKit Extension/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -511,7 +535,7 @@
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 4;
-				WATCHOS_DEPLOYMENT_TARGET = 6.2;
+				WATCHOS_DEPLOYMENT_TARGET = 6.0;
 			};
 			name = Release;
 		};
@@ -521,7 +545,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = H2Z5VT54PS;
+				DEVELOPMENT_TEAM = B6CFW954UH;
 				IBSC_MODULE = Battery_WatchKit_Extension;
 				INFOPLIST_FILE = "Battery WatchKit App/Info.plist";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ivanterziev.Battery.watchkitapp;
@@ -530,7 +554,7 @@
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 4;
-				WATCHOS_DEPLOYMENT_TARGET = 6.2;
+				WATCHOS_DEPLOYMENT_TARGET = 6.0;
 			};
 			name = Debug;
 		};
@@ -540,7 +564,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = H2Z5VT54PS;
+				DEVELOPMENT_TEAM = B6CFW954UH;
 				IBSC_MODULE = Battery_WatchKit_Extension;
 				INFOPLIST_FILE = "Battery WatchKit App/Info.plist";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ivanterziev.Battery.watchkitapp;
@@ -549,7 +573,7 @@
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 4;
-				WATCHOS_DEPLOYMENT_TARGET = 6.2;
+				WATCHOS_DEPLOYMENT_TARGET = 6.0;
 			};
 			name = Release;
 		};
@@ -558,8 +582,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = H2Z5VT54PS;
+				DEVELOPMENT_TEAM = B6CFW954UH;
 				INFOPLIST_FILE = Battery/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -567,7 +592,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.ivanterziev.Battery;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -576,8 +601,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = H2Z5VT54PS;
+				DEVELOPMENT_TEAM = B6CFW954UH;
 				INFOPLIST_FILE = Battery/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -585,7 +611,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.ivanterziev.Battery;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
