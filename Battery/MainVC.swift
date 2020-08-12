@@ -14,6 +14,7 @@ class MainVC: UIViewController {
     // MARK: - Properties
     @IBOutlet var levelLabel: UILabel!
     @IBOutlet var stateLabel: UILabel!
+    static let mainVC = MainVC()
     var level: Int = 0
     var state: UIDevice.BatteryState = .unknown
     var currentState: String = "unknown"
@@ -37,11 +38,11 @@ class MainVC: UIViewController {
         UIDevice.current.isBatteryMonitoringEnabled = true
         
         // Get the current battery level
-        getLevel()
+        level = getLevel()
         levelLabel.text = ("Your battery is at \n \(level)%")
         
         // Get the current battery state
-        getState()
+        currentState = getState()
         stateLabel.text = ("Your battery is \n \(currentState)")
         
         // Add observers to track for changes
@@ -49,11 +50,11 @@ class MainVC: UIViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(batteryStateDidChange(notification:)), name: UIDevice.batteryStateDidChangeNotification, object: nil)
     }
     
-    func getLevel() {
-        level = Int(device.batteryLevel * 100)
+    func getLevel() -> Int {
+        return Int(device.batteryLevel * 100)
     }
     
-    func getState() {
+    func getState() -> String {
         
         // Get the state
         state = device.batteryState
@@ -61,25 +62,25 @@ class MainVC: UIViewController {
         // Convert it into text
         switch state {
         case .full:
-            currentState = "full"
+            return "full"
         case .charging:
-            currentState = "charging"
+            return "charging"
         case .unplugged:
-            currentState = "unplugged"
+            return "unplugged"
         default:
-            currentState = "unknown"
+            return "unknown"
         }
     }
     
     
     // MARK: - Objective-C Methods
     @objc func batteryLevelDidChange(notification: NSNotification) {
-        getLevel()
+        level = getLevel()
         levelLabel.text = ("Your battery is at \n \(level)%")
     }
 
     @objc func batteryStateDidChange(notification: NSNotification) {
-        getState()
+        currentState = getState()
         stateLabel.text = ("Your battery is \n \(currentState)")
     }
 }
