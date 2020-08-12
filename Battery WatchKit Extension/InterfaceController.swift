@@ -85,11 +85,11 @@ class InterfaceController: WKInterfaceController, WCSessionDelegate {
     
     func setColor() {
         if state == "charging" {
-            
+            levelLabel.setTextColor(UIColor.green)
         } else if state == "unplugged" && level < 20 {
-            
+            levelLabel.setTextColor(UIColor.red)
         } else {
-            
+            levelLabel.setTextColor(UIColor.white)
         }
     }
     
