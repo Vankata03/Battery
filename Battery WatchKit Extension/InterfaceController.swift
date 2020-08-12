@@ -17,6 +17,7 @@ class InterfaceController: WKInterfaceController, WCSessionDelegate {
     private var session = WCSession.default
     var level: Int = 0
     var state: String = ""
+    var lowPower: Bool = false
     
     
     // MARK: - App Lifecycle Methods
@@ -35,6 +36,7 @@ class InterfaceController: WKInterfaceController, WCSessionDelegate {
             session.activate()
         }
         
+        // Get the current battery
         getBattery()
     }
     
@@ -53,11 +55,13 @@ class InterfaceController: WKInterfaceController, WCSessionDelegate {
         return session.isReachable
     }
     
+    // Used to get battery on launch
     private func getBattery() {
         repeat {
             requestLevel()
             sleep (1)
         } while (level == 0 || level == -100)
+        setColor()
     }
     
     func requestLevel() {
@@ -73,13 +77,20 @@ class InterfaceController: WKInterfaceController, WCSessionDelegate {
             
             // Request state
             session.sendMessage(["battery" : "state"], replyHandler: { (response) in
-                
                 self.state = response["state"] as! String
                 self.setColor()
-                
             }) { (error) in
                 print(error)
             }
+            
+            // Request lowPower
+            session.sendMessage(["battery" : "lowPower"], replyHandler: { (response) in
+                self.lowPower = response["lowPower"] as! Bool
+                self.setColor()
+            }) { (error) in
+                print(error)
+            }
+            
         }
     }
     
@@ -88,8 +99,32 @@ class InterfaceController: WKInterfaceController, WCSessionDelegate {
             levelLabel.setTextColor(UIColor.green)
         } else if state == "unplugged" && level < 20 {
             levelLabel.setTextColor(UIColor.red)
+        } else if lowPower == true && state == "unplugged" && level > 20 {
+            levelLabel.setTextColor(UIColor.yellow)
         } else {
             levelLabel.setTextColor(UIColor.white)
+        }
+    }
+    
+    func session(_ session: WCSession, didReceiveMessage message: [String : Any]) {
+       
+        // Update level
+        if (message["level"] != nil) {
+            self.level = message["level"] as! Int
+            self.levelLabel.setText("\(self.level)%")
+            self.setColor()
+        }
+        
+        // Update state
+        if (message["state"] != nil) {
+            self.state = message["state"] as! String
+            self.setColor()
+        }
+        
+        // Update lowPower
+        if (message["lowPower"] != nil) {
+            self.lowPower = message["lowPower"] as! Bool
+            self.setColor()
         }
     }
     
