@@ -75,7 +75,7 @@ class InterfaceController: WKInterfaceController, WCSessionDelegate {
             session.sendMessage(["battery" : "state"], replyHandler: { (response) in
                 
                 self.state = response["state"] as! String
-                setColor()
+                self.setColor()
                 
             }) { (error) in
                 print(error)
