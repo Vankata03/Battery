@@ -27,9 +27,9 @@ class MainVC: UIViewController {
         // Initiate setup
         setup()
         
-    }
-    
-    
+        }
+
+        
     // MARK: - Methods
     func setup() {
         
@@ -44,6 +44,9 @@ class MainVC: UIViewController {
         getState()
         stateLabel.text = ("Your battery is \n \(currentState)")
         
+        // Add observers to track for changes
+        NotificationCenter.default.addObserver(self, selector: #selector(batteryLevelDidChange(notification:)), name: UIDevice.batteryLevelDidChangeNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(batteryStateDidChange(notification:)), name: UIDevice.batteryStateDidChangeNotification, object: nil)
     }
     
     func getLevel() {
@@ -66,11 +69,17 @@ class MainVC: UIViewController {
         default:
             currentState = "unknown"
         }
-        
     }
     
     
     // MARK: - Objective-C Methods
+    @objc func batteryLevelDidChange(notification: NSNotification) {
+        getLevel()
+        levelLabel.text = ("Your battery is at \n \(level)%")
+    }
 
-
+    @objc func batteryStateDidChange(notification: NSNotification) {
+        getState()
+        stateLabel.text = ("Your battery is \n \(currentState)")
+    }
 }
