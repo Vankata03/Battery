@@ -19,6 +19,7 @@ class MainVC: UIViewController {
     var state: UIDevice.BatteryState = .unknown
     var currentState: String = "unknown"
     var device = UIDevice.current
+    var lowPower: Bool = false
     
     
     // MARK: - App Lifecycle Methods
@@ -45,9 +46,14 @@ class MainVC: UIViewController {
         currentState = getState()
         stateLabel.text = ("Your battery is \n \(currentState)")
         
+        // Get low power
+        lowPower = getLowPower()
+        setColor()
+        
         // Add observers to track for changes
         NotificationCenter.default.addObserver(self, selector: #selector(batteryLevelDidChange(notification:)), name: UIDevice.batteryLevelDidChangeNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(batteryStateDidChange(notification:)), name: UIDevice.batteryStateDidChangeNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(powerStateChanged), name: Notification.Name.NSProcessInfoPowerStateDidChange, object: nil)
     }
     
     func getLevel() -> Int {
@@ -72,15 +78,41 @@ class MainVC: UIViewController {
         }
     }
     
+    func getLowPower() -> Bool {
+        return ProcessInfo.processInfo.isLowPowerModeEnabled
+    }
+    
+    func setColor() {
+        if currentState == "charging" {
+            stateLabel.textColor = UIColor.green
+        } else if currentState == "unplugged" && level <= 20 {
+            stateLabel.textColor = UIColor.red
+        } else if currentState == "unplugged" && level > 20 && lowPower == true {
+            stateLabel.textColor = UIColor.yellow
+        } else {
+            stateLabel.textColor = UIColor.init(named: "text")
+        }
+    }
+    
     
     // MARK: - Objective-C Methods
     @objc func batteryLevelDidChange(notification: NSNotification) {
         level = getLevel()
         levelLabel.text = ("Your battery is at \n \(level)%")
+        SessionHandler.shared.updateBattery()
+        setColor()
     }
 
     @objc func batteryStateDidChange(notification: NSNotification) {
         currentState = getState()
         stateLabel.text = ("Your battery is \n \(currentState)")
+        SessionHandler.shared.updateBattery()
+        setColor()
+    }
+    
+    @objc func powerStateChanged(notification: NSNotification) {
+        lowPower = getLowPower()
+        SessionHandler.shared.updateBattery()
+        setColor()
     }
 }

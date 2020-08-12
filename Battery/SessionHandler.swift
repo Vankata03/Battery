@@ -27,11 +27,7 @@ class SessionHandler: NSObject, WCSessionDelegate {
     }
     
     
-    // MARK: - Methods
-    func isSuported() -> Bool {
-        return WCSession.isSupported()
-    }
-    
+    // MARK: - Session Methods
     func session(_ session: WCSession, activationDidCompleteWith activationState: WCSessionActivationState, error: Error?) {
                 print("activationDidCompleteWith activationState:\(activationState) error:\(String(describing: error))")
     }
@@ -44,12 +40,51 @@ class SessionHandler: NSObject, WCSessionDelegate {
         self.session.activate()
     }
     
+    
+    // MARK: - Methods
+    func isSuported() -> Bool {
+        return WCSession.isSupported()
+    }
+    
+    private func isReachable() -> Bool {
+        return session.isReachable
+    }
+    
     func session(_ session: WCSession, didReceiveMessage message: [String : Any], replyHandler: @escaping ([String : Any]) -> Void) {
+        
+        // Update level
         if message["battery"] as? String == "level" {
             replyHandler(["level" : MainVC.mainVC.getLevel()])
         }
+        
+        // Update state
         if message["battery"] as? String == "state" {
             replyHandler(["state" : MainVC.mainVC.getState()])
+        }
+        
+        // Update lowPower
+        if message["battery"] as? String == "lowPower" {
+            replyHandler(["lowPower" : MainVC.mainVC.getLowPower()])
+        }
+    }
+    
+    func updateBattery() {
+        if isReachable() {
+            
+            // Update level
+            session.sendMessage(["level" : MainVC.mainVC.getLevel()], replyHandler: nil) { (error) in
+                print(error)
+            }
+            
+            // Update state
+            session.sendMessage(["state" : MainVC.mainVC.getState()], replyHandler: nil) { (error) in
+                print(error)
+            }
+            
+            // Update lowPower
+            session.sendMessage(["lowPower" : MainVC.mainVC.getLowPower()], replyHandler: nil) { (error) in
+                print("error")
+            }
         }
     }
 }
