@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0263017E24E44CD100FDAD61 /* SessionHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0263017D24E44CD100FDAD61 /* SessionHandler.swift */; };
 		0264F33D24E4219100ED0263 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0264F33C24E4219100ED0263 /* AppDelegate.swift */; };
 		0264F33F24E4219100ED0263 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0264F33E24E4219100ED0263 /* SceneDelegate.swift */; };
 		0264F34124E4219100ED0263 /* MainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0264F34024E4219100ED0263 /* MainVC.swift */; };
@@ -67,6 +68,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		0263017D24E44CD100FDAD61 /* SessionHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionHandler.swift; sourceTree = "<group>"; };
 		0264F33924E4219100ED0263 /* Battery.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Battery.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0264F33C24E4219100ED0263 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0264F33E24E4219100ED0263 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -133,6 +135,7 @@
 				0264F37C24E4223100ED0263 /* Delegates */,
 				0264F37B24E421DF00ED0263 /* Storyboards */,
 				0264F34024E4219100ED0263 /* MainVC.swift */,
+				0263017D24E44CD100FDAD61 /* SessionHandler.swift */,
 				0264F34524E4219200ED0263 /* Assets.xcassets */,
 				0264F34A24E4219200ED0263 /* Info.plist */,
 			);
@@ -152,8 +155,9 @@
 		0264F36024E4219300ED0263 /* Battery WatchKit Extension */ = {
 			isa = PBXGroup;
 			children = (
-				0264F37A24E421D000ED0263 /* Controllers */,
+				0264F36124E4219300ED0263 /* InterfaceController.swift */,
 				0264F36324E4219300ED0263 /* ExtensionDelegate.swift */,
+				0264F37A24E421D000ED0263 /* Controllers */,
 				0264F36924E4219300ED0263 /* Assets.xcassets */,
 				0264F36B24E4219300ED0263 /* Info.plist */,
 				0264F36C24E4219300ED0263 /* PushNotificationPayload.apns */,
@@ -164,7 +168,6 @@
 		0264F37A24E421D000ED0263 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				0264F36124E4219300ED0263 /* InterfaceController.swift */,
 				0264F36524E4219300ED0263 /* NotificationController.swift */,
 				0264F36724E4219300ED0263 /* ComplicationController.swift */,
 			);
@@ -322,6 +325,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0264F34124E4219100ED0263 /* MainVC.swift in Sources */,
+				0263017E24E44CD100FDAD61 /* SessionHandler.swift in Sources */,
 				0264F33D24E4219100ED0263 /* AppDelegate.swift in Sources */,
 				0264F33F24E4219100ED0263 /* SceneDelegate.swift in Sources */,
 			);

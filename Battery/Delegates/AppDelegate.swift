@@ -7,14 +7,18 @@
 //
 
 import UIKit
+import WatchConnectivity
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
-
-
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+
+        // Chech if the session is suported
+        if !SessionHandler.shared.isSuported() {
+            print("WCSession not suported.")
+        }
+
         return true
     }
 
