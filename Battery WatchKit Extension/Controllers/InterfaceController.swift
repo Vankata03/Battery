@@ -15,6 +15,7 @@ class InterfaceController: WKInterfaceController, WCSessionDelegate {
     // MARK: - Properties
     @IBOutlet var levelLabel: WKInterfaceLabel!
     private var session = WCSession.default
+    static let interfaceController = InterfaceController()
     var level: Int = 0
     var state: String = ""
     var lowPower: Bool = false
@@ -56,7 +57,7 @@ class InterfaceController: WKInterfaceController, WCSessionDelegate {
     }
     
     // Used to get battery on launch
-    private func getBattery() {
+    func getBattery() {
         repeat {
             requestLevel()
             sleep (1)

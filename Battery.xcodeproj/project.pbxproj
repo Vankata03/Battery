@@ -155,8 +155,7 @@
 		0264F36024E4219300ED0263 /* Battery WatchKit Extension */ = {
 			isa = PBXGroup;
 			children = (
-				0264F36124E4219300ED0263 /* InterfaceController.swift */,
-				0264F36324E4219300ED0263 /* ExtensionDelegate.swift */,
+				028CFDDF24E5A61B0005B863 /* Delegates */,
 				0264F37A24E421D000ED0263 /* Controllers */,
 				0264F36924E4219300ED0263 /* Assets.xcassets */,
 				0264F36B24E4219300ED0263 /* Info.plist */,
@@ -168,6 +167,7 @@
 		0264F37A24E421D000ED0263 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				0264F36124E4219300ED0263 /* InterfaceController.swift */,
 				0264F36524E4219300ED0263 /* NotificationController.swift */,
 				0264F36724E4219300ED0263 /* ComplicationController.swift */,
 			);
@@ -188,6 +188,14 @@
 			children = (
 				0264F33C24E4219100ED0263 /* AppDelegate.swift */,
 				0264F33E24E4219100ED0263 /* SceneDelegate.swift */,
+			);
+			path = Delegates;
+			sourceTree = "<group>";
+		};
+		028CFDDF24E5A61B0005B863 /* Delegates */ = {
+			isa = PBXGroup;
+			children = (
+				0264F36324E4219300ED0263 /* ExtensionDelegate.swift */,
 			);
 			path = Delegates;
 			sourceTree = "<group>";
