@@ -15,7 +15,7 @@ class ExtensionDelegate: NSObject, WKExtensionDelegate {
     }
 
     func applicationDidBecomeActive() {
-        InterfaceController.interfaceController.getBattery()
+        
     }
 
     func applicationWillResignActive() {
