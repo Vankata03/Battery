@@ -14,10 +14,10 @@
 		0264F34424E4219100ED0263 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0264F34224E4219100ED0263 /* Main.storyboard */; };
 		0264F34624E4219200ED0263 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0264F34524E4219200ED0263 /* Assets.xcassets */; };
 		0264F34924E4219200ED0263 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0264F34724E4219200ED0263 /* LaunchScreen.storyboard */; };
-		0264F34E24E4219200ED0263 /* Battery WatchKit App.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 0264F34D24E4219200ED0263 /* Battery WatchKit App.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		0264F34E24E4219200ED0263 /* Battery.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 0264F34D24E4219200ED0263 /* Battery.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		0264F35424E4219200ED0263 /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0264F35224E4219200ED0263 /* Interface.storyboard */; };
 		0264F35624E4219300ED0263 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0264F35524E4219300ED0263 /* Assets.xcassets */; };
-		0264F35D24E4219300ED0263 /* Battery WatchKit Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 0264F35C24E4219300ED0263 /* Battery WatchKit Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		0264F35D24E4219300ED0263 /* Battery.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 0264F35C24E4219300ED0263 /* Battery.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		0264F36224E4219300ED0263 /* InterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0264F36124E4219300ED0263 /* InterfaceController.swift */; };
 		0264F36424E4219300ED0263 /* ExtensionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0264F36324E4219300ED0263 /* ExtensionDelegate.swift */; };
 		0264F36624E4219300ED0263 /* NotificationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0264F36524E4219300ED0263 /* NotificationController.swift */; };
@@ -49,7 +49,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 13;
 			files = (
-				0264F35D24E4219300ED0263 /* Battery WatchKit Extension.appex in Embed App Extensions */,
+				0264F35D24E4219300ED0263 /* Battery.appex in Embed App Extensions */,
 			);
 			name = "Embed App Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -60,7 +60,7 @@
 			dstPath = "$(CONTENTS_FOLDER_PATH)/Watch";
 			dstSubfolderSpec = 16;
 			files = (
-				0264F34E24E4219200ED0263 /* Battery WatchKit App.app in Embed Watch Content */,
+				0264F34E24E4219200ED0263 /* Battery.app in Embed Watch Content */,
 			);
 			name = "Embed Watch Content";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -77,11 +77,11 @@
 		0264F34524E4219200ED0263 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0264F34824E4219200ED0263 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0264F34A24E4219200ED0263 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		0264F34D24E4219200ED0263 /* Battery WatchKit App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Battery WatchKit App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		0264F34D24E4219200ED0263 /* Battery.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Battery.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0264F35324E4219200ED0263 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Interface.storyboard; sourceTree = "<group>"; };
 		0264F35524E4219300ED0263 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0264F35724E4219300ED0263 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		0264F35C24E4219300ED0263 /* Battery WatchKit Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "Battery WatchKit Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
+		0264F35C24E4219300ED0263 /* Battery.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = Battery.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		0264F36124E4219300ED0263 /* InterfaceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterfaceController.swift; sourceTree = "<group>"; };
 		0264F36324E4219300ED0263 /* ExtensionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionDelegate.swift; sourceTree = "<group>"; };
 		0264F36524E4219300ED0263 /* NotificationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationController.swift; sourceTree = "<group>"; };
@@ -123,8 +123,8 @@
 			isa = PBXGroup;
 			children = (
 				0264F33924E4219100ED0263 /* Battery.app */,
-				0264F34D24E4219200ED0263 /* Battery WatchKit App.app */,
-				0264F35C24E4219300ED0263 /* Battery WatchKit Extension.appex */,
+				0264F34D24E4219200ED0263 /* Battery.app */,
+				0264F35C24E4219300ED0263 /* Battery.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -236,7 +236,7 @@
 			);
 			name = "Battery WatchKit App";
 			productName = "Battery WatchKit App";
-			productReference = 0264F34D24E4219200ED0263 /* Battery WatchKit App.app */;
+			productReference = 0264F34D24E4219200ED0263 /* Battery.app */;
 			productType = "com.apple.product-type.application.watchapp2";
 		};
 		0264F35B24E4219300ED0263 /* Battery WatchKit Extension */ = {
@@ -253,7 +253,7 @@
 			);
 			name = "Battery WatchKit Extension";
 			productName = "Battery WatchKit Extension";
-			productReference = 0264F35C24E4219300ED0263 /* Battery WatchKit Extension.appex */;
+			productReference = 0264F35C24E4219300ED0263 /* Battery.appex */;
 			productType = "com.apple.product-type.watchkit2-extension";
 		};
 /* End PBXNativeTarget section */
@@ -520,7 +520,7 @@
 					"@executable_path/../../Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.ivanterziev.Battery.watchkitapp.watchkitextension;
-				PRODUCT_NAME = "${TARGET_NAME}";
+				PRODUCT_NAME = Battery;
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 5.0;
@@ -542,7 +542,7 @@
 					"@executable_path/../../Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.ivanterziev.Battery.watchkitapp.watchkitextension;
-				PRODUCT_NAME = "${TARGET_NAME}";
+				PRODUCT_NAME = Battery;
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 5.0;
@@ -561,7 +561,7 @@
 				IBSC_MODULE = Battery_WatchKit_Extension;
 				INFOPLIST_FILE = "Battery WatchKit App/Info.plist";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ivanterziev.Battery.watchkitapp;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = Battery;
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 5.0;
@@ -580,7 +580,7 @@
 				IBSC_MODULE = Battery_WatchKit_Extension;
 				INFOPLIST_FILE = "Battery WatchKit App/Info.plist";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ivanterziev.Battery.watchkitapp;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = Battery;
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 5.0;
