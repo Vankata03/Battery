@@ -13,18 +13,15 @@ class ComplicationController: NSObject, CLKComplicationDataSource {
     // MARK: - Timeline Configuration
     
     func getSupportedTimeTravelDirections(for complication: CLKComplication, withHandler handler: @escaping (CLKComplicationTimeTravelDirections) -> Void) {
-        handler([.forward, .backward])
+        handler(.backward)
     }
     
     func getTimelineStartDate(for complication: CLKComplication, withHandler handler: @escaping (Date?) -> Void) {
-        let currentDate = Date()
-        handler(currentDate)
+        handler(nil)
     }
     
     func getTimelineEndDate(for complication: CLKComplication, withHandler handler: @escaping (Date?) -> Void) {
-        var nextDate = Date()
-        nextDate.addTimeInterval(24 * 60 * 60)
-        handler(nextDate)
+        handler(nil)
     }
     
     func getPrivacyBehavior(for complication: CLKComplication, withHandler handler: @escaping (CLKComplicationPrivacyBehavior) -> Void) {
@@ -36,8 +33,9 @@ class ComplicationController: NSObject, CLKComplicationDataSource {
     func getCurrentTimelineEntry(for complication: CLKComplication, withHandler handler: @escaping (CLKComplicationTimelineEntry?) -> Void) {
         
         // Info used
-        let gaugeProvider = CLKSimpleGaugeProvider.init(style: .fill, gaugeColor: UIColor.green, fillFraction: 0.7)
-        let textProvider = CLKSimpleTextProvider(text: "70")
+        let level: Float = 0.7
+        let gaugeProvider = CLKSimpleGaugeProvider.init(style: .fill, gaugeColor: UIColor.green, fillFraction: level)
+        let textProvider = CLKSimpleTextProvider(text: "\(level)")
         let appText = CLKSimpleTextProvider(text: "Battery")
         
         // Go trough every supported compliction
@@ -48,7 +46,7 @@ class ComplicationController: NSObject, CLKComplicationDataSource {
             let template = CLKComplicationTemplateUtilitarianSmallRingText()
             template.ringStyle = .closed
             template.tintColor = UIColor.green
-            template.fillFraction = 0.7
+            template.fillFraction = level
             template.textProvider = textProvider
             
             // Pass the current timeline entry
@@ -61,7 +59,7 @@ class ComplicationController: NSObject, CLKComplicationDataSource {
             let template = CLKComplicationTemplateCircularSmallRingText()
             template.ringStyle = .closed
             template.tintColor = UIColor.green
-            template.fillFraction = 0.7
+            template.fillFraction = level
             template.textProvider = textProvider
             
             // Pass the current timeline entry
@@ -74,7 +72,7 @@ class ComplicationController: NSObject, CLKComplicationDataSource {
             let template = CLKComplicationTemplateExtraLargeRingText()
             template.ringStyle = .closed
             template.tintColor = UIColor.green
-            template.fillFraction = 0.7
+            template.fillFraction = level
             template.textProvider = textProvider
             
             // Pass the current timeline entry
@@ -123,12 +121,10 @@ class ComplicationController: NSObject, CLKComplicationDataSource {
     }
     
     func getTimelineEntries(for complication: CLKComplication, before date: Date, limit: Int, withHandler handler: @escaping ([CLKComplicationTimelineEntry]?) -> Void) {
-        // Call the handler with the timeline entries prior to the given date
         handler(nil)
     }
     
     func getTimelineEntries(for complication: CLKComplication, after date: Date, limit: Int, withHandler handler: @escaping ([CLKComplicationTimelineEntry]?) -> Void) {
-        // Call the handler with the timeline entries after to the given date
         handler(nil)
     }
     

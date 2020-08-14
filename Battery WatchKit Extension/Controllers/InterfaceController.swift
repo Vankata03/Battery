@@ -16,6 +16,7 @@ class InterfaceController: WKInterfaceController, WCSessionDelegate {
     @IBOutlet var levelLabel: WKInterfaceLabel!
     private var session = WCSession.default
     static let interfaceController = InterfaceController()
+    var lastLevel: Int = 0
     var level: Int = 0
     var state: String = ""
     var lowPower: Bool = false
@@ -39,6 +40,16 @@ class InterfaceController: WKInterfaceController, WCSessionDelegate {
         
         // Get the current battery
         getBattery()
+        
+        // Update the complications
+        let complicationServer = CLKComplicationServer.sharedInstance()
+        guard complicationServer.activeComplications != nil else {
+            return
+        }
+        for complications in complicationServer.activeComplications! {
+            complicationServer.reloadTimeline(for: complications)
+        }
+        
     }
     
     override func didDeactivate() {
@@ -60,6 +71,8 @@ class InterfaceController: WKInterfaceController, WCSessionDelegate {
     private func getBattery() {
         repeat {
             requestLevel()
+            requestState()
+            requestLowPower()
             sleep (1)
         } while (level == 0 || level == -100)
         setColor()
@@ -67,7 +80,6 @@ class InterfaceController: WKInterfaceController, WCSessionDelegate {
     
     func requestLevel() {
         if isReachable() {
-            
             // Request level
             session.sendMessage(["battery" : "level"], replyHandler: { (response) in
                 self.level = response["level"] as! Int
@@ -75,7 +87,11 @@ class InterfaceController: WKInterfaceController, WCSessionDelegate {
             }) { (error) in
                 print(error)
             }
-            
+        }
+    }
+    
+    func requestState() {
+        if isReachable() {
             // Request state
             session.sendMessage(["battery" : "state"], replyHandler: { (response) in
                 self.state = response["state"] as! String
@@ -83,7 +99,11 @@ class InterfaceController: WKInterfaceController, WCSessionDelegate {
             }) { (error) in
                 print(error)
             }
-            
+        }
+    }
+    
+    func requestLowPower() {
+        if isReachable() {
             // Request lowPower
             session.sendMessage(["battery" : "lowPower"], replyHandler: { (response) in
                 self.lowPower = response["lowPower"] as! Bool
@@ -91,7 +111,6 @@ class InterfaceController: WKInterfaceController, WCSessionDelegate {
             }) { (error) in
                 print(error)
             }
-            
         }
     }
     
@@ -108,7 +127,7 @@ class InterfaceController: WKInterfaceController, WCSessionDelegate {
     }
     
     func session(_ session: WCSession, didReceiveMessage message: [String : Any]) {
-       
+        
         // Update level
         if (message["level"] != nil) {
             self.level = message["level"] as! Int
