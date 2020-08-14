@@ -16,7 +16,6 @@ class InterfaceController: WKInterfaceController, WCSessionDelegate {
     @IBOutlet var levelLabel: WKInterfaceLabel!
     private var session = WCSession.default
     static let interfaceController = InterfaceController()
-    var lastLevel: Int = 0
     var level: Int = 0
     var state: String = ""
     var lowPower: Bool = false
