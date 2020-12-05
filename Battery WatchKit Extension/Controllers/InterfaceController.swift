@@ -9,8 +9,9 @@
 import WatchKit
 import Foundation
 import WatchConnectivity
+import ClockKit
 
-class InterfaceController: WKInterfaceController, WCSessionDelegate {
+class InterfaceController: WKInterfaceController, WCSessionDelegate, WKExtensionDelegate {
     
     // MARK: - Properties
     @IBOutlet var levelLabel: WKInterfaceLabel!
@@ -22,12 +23,14 @@ class InterfaceController: WKInterfaceController, WCSessionDelegate {
     
     
     // MARK: - App Lifecycle Methods
+    // Activates when the app loads
     override func awake(withContext context: Any?) {
         super.awake(withContext: context)
         
         
     }
     
+    // Activates when you start launching the app
     override func willActivate() {
         super.willActivate()
         
@@ -51,6 +54,7 @@ class InterfaceController: WKInterfaceController, WCSessionDelegate {
         
     }
     
+    // Activates when the app goes to sleep
     override func didDeactivate() {
         super.didDeactivate()
         
@@ -58,10 +62,12 @@ class InterfaceController: WKInterfaceController, WCSessionDelegate {
     
     
     // MARK: - Methods
+    // Returns if the session is supported
     private func isSuported() -> Bool {
         return WCSession.isSupported()
     }
     
+    // Returns if the iPhone is reachable
     private func isReachable() -> Bool {
         return session.isReachable
     }
@@ -77,6 +83,7 @@ class InterfaceController: WKInterfaceController, WCSessionDelegate {
         setColor()
     }
     
+    // Requests battery level
     func requestLevel() {
         if isReachable() {
             // Request level
@@ -89,6 +96,7 @@ class InterfaceController: WKInterfaceController, WCSessionDelegate {
         }
     }
     
+    // Requests battery state
     func requestState() {
         if isReachable() {
             // Request state
@@ -101,6 +109,7 @@ class InterfaceController: WKInterfaceController, WCSessionDelegate {
         }
     }
     
+    // Requests low power state
     func requestLowPower() {
         if isReachable() {
             // Request lowPower
@@ -113,6 +122,7 @@ class InterfaceController: WKInterfaceController, WCSessionDelegate {
         }
     }
     
+    // Sets color based on level, state and low power
     func setColor() {
         if state == "charging" {
             levelLabel.setTextColor(UIColor.green)
@@ -125,6 +135,7 @@ class InterfaceController: WKInterfaceController, WCSessionDelegate {
         }
     }
     
+    // Updates values when it receives them
     func session(_ session: WCSession, didReceiveMessage message: [String : Any]) {
         
         // Update level

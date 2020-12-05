@@ -28,7 +28,6 @@ class MainVC: UIViewController {
         
         // Initiate setup
         setup()
-        
         }
 
         
@@ -56,10 +55,12 @@ class MainVC: UIViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(powerStateChanged), name: Notification.Name.NSProcessInfoPowerStateDidChange, object: nil)
     }
     
+    // Returns the exact percentage
     func getLevel() -> Int {
         return Int(device.batteryLevel * 100)
     }
     
+    // Returns the state as string
     func getState() -> String {
         
         // Get the state
@@ -78,10 +79,12 @@ class MainVC: UIViewController {
         }
     }
     
+    // Return low power enabled as boolean
     func getLowPower() -> Bool {
         return ProcessInfo.processInfo.isLowPowerModeEnabled
     }
     
+    // Changes colors based on charging lavel, state and low power mode
     func setColor() {
         if currentState == "charging" {
             stateLabel.textColor = UIColor.green
@@ -96,6 +99,7 @@ class MainVC: UIViewController {
     
     
     // MARK: - Objective-C Methods
+    // Triggers on level change
     @objc func batteryLevelDidChange(notification: NSNotification) {
         level = getLevel()
         levelLabel.text = ("Your battery is at \n \(level)%")
@@ -103,6 +107,7 @@ class MainVC: UIViewController {
         setColor()
     }
 
+    // Triggers on state change
     @objc func batteryStateDidChange(notification: NSNotification) {
         currentState = getState()
         stateLabel.text = ("Your battery is \n \(currentState)")
@@ -110,6 +115,7 @@ class MainVC: UIViewController {
         setColor()
     }
     
+    // Triggers on low power mode change
     @objc func powerStateChanged(notification: NSNotification) {
         lowPower = getLowPower()
         SessionHandler.shared.updateBattery()
